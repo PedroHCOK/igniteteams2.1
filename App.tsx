@@ -6,7 +6,7 @@ import { Loading } from '@components/Loading';
 
 import theme from './src/theme'
 
-import { NewGroup } from '@screens/NewGroup/index';
+import { Groups } from '@screens/Groups';
 
 export default function App() {
   const [fontsLoaded] = useFonts ({ Roboto_400Regular, Roboto_700Bold });
@@ -19,7 +19,7 @@ export default function App() {
         backgroundColor = 'trasnparent'
         translucent
       />
-      {fontsLoaded ? <NewGroup /> : <Loading />}
+      {fontsLoaded ? <Groups /> : <Loading />}
     </ThemeProvider>
     
   );
