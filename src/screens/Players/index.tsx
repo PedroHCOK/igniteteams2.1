@@ -1,14 +1,23 @@
+import { useState } from 'react';
 import { Input } from '@components/Input';
+import { Filter } from '@components/Fillter';
 import { Header } from '@components/Header';
 import { Highlight } from '@components/Highlight/Index';
 import { ButtonIcon } from '@components/ButtonIcon';
 
-import { Container, Form } from './styles';
+import { Container, Form, HeaderList, NumbersOfPlayers } from './styles';
+import { FlatList } from 'react-native';
 
 export function Players(){
+
+    const [team, setTeam] = useState('Time A');
+    const [players, setPlayers] = useState(['james', 'roger', 'joao', 'lulu']);
+
     return (
         <Container>
-            <Header showBackButton/>
+            <Header 
+                showBackButton
+            />
 
             <Highlight
                 title="Nome da Turma"
@@ -20,12 +29,29 @@ export function Players(){
                     placeholder='Nome da pessoa'
                     autoCorrect={false}
                 />
+
                 <ButtonIcon
                     icon='add'
                  />
             </Form>
-                
-            
+
+            <HeaderList>
+                <FlatList
+                    data={['Time A', 'Time B']}
+                    keyExtractor={item => item}
+                    renderItem={({ item }) => (
+                        <Filter
+                            title={item}
+                            isActive={item === team}
+                            onPress={() => setTeam(item)}
+                        />
+                    )}
+                    horizontal
+                />
+                <NumbersOfPlayers>
+                    {players.length}
+                </NumbersOfPlayers>
+            </HeaderList>
 
         </Container>
     );
