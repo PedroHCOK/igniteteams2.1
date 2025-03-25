@@ -13,7 +13,7 @@ export function Groups() {
   const [groups, setGroups] = useState<string[]>([]);
   return (
     <Container>
-      <Header />
+      <Header/>
       <Highlight 
       title="Turmas" 
       subtitle="Jogue com a sua turma" 
@@ -35,6 +35,7 @@ export function Groups() {
           message="Que tal cadastrar a primeira turma?"  
         />
         )}
+        showsVerticalScrollIndicator={false}
       />
 
       <Button
